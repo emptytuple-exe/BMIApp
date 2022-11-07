@@ -28,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
   double height = 100;
   double weight = 100;
   double bmi = 0;
-  String IT = "";
+  String it = "";
   void _inc() {
     setState(() {
       weight++;
@@ -45,13 +45,13 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       bmi=(weight/(height*height))*10000;
       if (bmi<18)
-        IT="Underweight";
+        it="Underweight";
       else if(bmi>18 && bmi<25)
-        IT="Normal weight";
+        it="Normal weight";
       else if(bmi>25 && bmi<30)
-        IT="Overweight";
+        it="Overweight";
       else
-        IT="Obese";
+        it="Obese";
 
     });
   }
@@ -183,7 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          Text("BMI=${bmi.round()}\nYou are in the category: ${IT}",
+          Text("BMI=${bmi.round()}\nYou are in the category: ${it}",
               style: TextStyle(fontSize:40, color: Color(0xff230000)
     ),
     ),
