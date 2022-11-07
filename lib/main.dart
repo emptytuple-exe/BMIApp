@@ -189,10 +189,8 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
         ]
     ),
-          Visibility(child: Text("Hello"))
       ]
       ),
-
     );
       }
 }
