@@ -17,29 +17,30 @@ class _SecondPageState extends State<SecondPage> {
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ()),
-                  ); //navigator.push
-                },//onPressed
-                child: Text('Re-calculate',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xff000000),
+              Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },//onPressed
+                    child: Text('Re-calculate',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xff000000),
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5), // <-- Radius
+                      ),
+                    ),
                   ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5), // <-- Radius
-                  ),
-                ),
-              ),
-            ]
+                ] // column-children
+              )
+            ] // row-children
           )
       );
-  }
-}
+  } // widget
+} //class
