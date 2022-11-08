@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gerund/SecondPage.dart';
 
 void main() {
   runApp(const gerund());
@@ -45,13 +46,13 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       bmi=(weight/(height*height))*10000;
       if (bmi<18)
-        it="Underweight";
+        {it="Underweight";}
       else if(bmi>18 && bmi<25)
-        it="Normal weight";
+        {it="Normal weight";}
       else if(bmi>25 && bmi<30)
-        it="Overweight";
+        {it="Overweight";}
       else
-        it="Obese";
+        {it="Obese";}
 
     });
   }
@@ -168,7 +169,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ElevatedButton(
             onPressed: () {
               _bnmi();
-              },
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SecondPage()),
+              ); //navigator.push
+              },//onPressed
             child: Text('Calculate',
               style: TextStyle(
                   fontSize: 20,
