@@ -11,6 +11,11 @@ class gerund extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // initialRoute: '/',
+      // routes: {
+      //   '/':(context)=> MyHomePage(),
+      //   '/second':(context)=>SecondPage(bmi: bmi, it: it),
+      // },
       home: MyHomePage(),
     );
   }
@@ -169,10 +174,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ElevatedButton(
             onPressed: () {
               _bnmi();
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SecondPage(bmi:bmi, it:it)),
-              ); //navigator.push
+              Navigator.push(context,
+              MaterialPageRoute(builder: (context)=>SecondPage(bmi: bmi, it: it)));
               },//onPressed
             child: Text('Calculate',
               style: TextStyle(
