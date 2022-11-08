@@ -171,7 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
               _bnmi();
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SecondPage()),
+                  MaterialPageRoute(builder: (context) => SecondPage(bmi:bmi, it:it)),
               ); //navigator.push
               },//onPressed
             child: Text('Calculate',

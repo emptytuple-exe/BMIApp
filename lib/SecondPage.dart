@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class SecondPage extends StatefulWidget {
-  const SecondPage({Key? key}) : super(key: key);
+  SecondPage({required this.bmi, required this.it});
+
+  double bmi;
+  String it;
 
   @override
   State<SecondPage> createState() => _SecondPageState();
@@ -18,7 +21,12 @@ class _SecondPageState extends State<SecondPage> {
         mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Text("BMI=${widget.bmi.round()}\nYou are in the category: ${widget.it}",
+                    style: TextStyle(fontSize:40, color: Color(0xff230000)
+                    ),
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
