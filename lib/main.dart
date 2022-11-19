@@ -63,146 +63,153 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightBlue,
-        title: Text(
-          "BMI Calculator",
-          style: TextStyle(color: Color(0xff230000)),
+        appBar: AppBar(
+          backgroundColor: Colors.lightBlue,
+          title: Text(
+            "BMI Calculator",
+            style: TextStyle(color: Colors.black),
+          ),
         ),
-      ),
 
-
-      body:
-      Center(
-        child:
-        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                    Text("Enter dormamu height here:",
-                      style: TextStyle(fontSize: 40, color: Color(0xff230000)),
-                      textAlign: TextAlign.center,
-                    ),
-
-            Row(
+        body:
+        Center(
+          child:
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.blueGrey,
-                      ),
-                      height: 150,
-                      width: 250,
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              "Height: ${height.round()}",
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xff000000)),
-                            ),
-                            Slider(
-                                value: height,
-                                min: 5,
-                                activeColor: Colors.lightBlue,
-                                inactiveColor: Colors.blue,
-                                max: 200,
-                                onChanged: (value) {
-                                  setState(() {
-                                    height = value;
-                                  });
-                                })
-                          ])
+                      child:
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text("Enter your height here:",
+                            style: TextStyle(fontSize: 40, color: Color(0xff230000)),
+                            textAlign: TextAlign.center,)
+                        ],
+                      )
                   ),
-                ]
-            ),
-
-
-            Text(
-              "Enter your weight:",
-              style: TextStyle(fontSize: 40, color: Color(0xff230000)),
-            ),
-
-            Container(
-                height: 150,
-                width: 250,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.blueGrey,
-                ),
-                child: Column(
+                  Container(
+                      decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.blueGrey,
+                      ),
+                  height: 150,
+                  width: 250,
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(
-                        "Weight: ${weight}",
+                  Text(
+                    "Height: ${height.round()}",
+                    style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff000000)),
+                  ),
+                  Slider(
+                    value: height,
+                    min: 5,
+                    activeColor: Colors.lightBlue,
+                    inactiveColor: Colors.blue,
+                    max: 200,
+                    onChanged: (value) {
+                      setState(() {
+                        height = value;
+                      });
+                    })
+                  ]),
+                  ),
+                  Container(
+                      child:
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text("Enter your weight here:",
+                            style: TextStyle(fontSize: 40, color: Color(0xff230000)),
+                            textAlign: TextAlign.center,)
+                        ],
+                      )
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.blueGrey,
+                    ),
+                    height: 150,
+                    width: 250,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            "Weight: ${weight.round()}",
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xff000000)),
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                MaterialButton(
+                                  onPressed: () {
+                                    _inc();
+                                  },
+                                  elevation: 2.0,
+                                  color: Colors.blue,
+                                  hoverColor: Colors.green,
+                                  highlightColor: Colors.greenAccent,
+                                  child: Icon(
+                                    Icons.add,
+                                    size: 50.0,
+                                  ),
+                                  padding: EdgeInsets.all(15.0),
+                                  shape: CircleBorder(),
+                                ),
+                                MaterialButton(
+                                  onPressed: () {
+                                    _dec();
+                                  },
+                                  elevation: 2.0,
+                                  color: Colors.blue,
+                                  hoverColor: Colors.red,
+                                  highlightColor: Colors.redAccent,
+                                  child: Icon(
+                                    Icons.remove,
+                                    size: 50.0,
+                                  ),
+                                  padding: EdgeInsets.all(15.0),
+                                  shape: CircleBorder(),
+                                )
+                              ])
+                        ]),
+                  ),
+                  Container(
+                    child:
+                    ElevatedButton(
+                      onPressed: () {
+                        _bnmi();
+                        Navigator.pushNamed(context, '/second',
+                            arguments: Argument(bmi: bmi, it: it));
+                      }, //onPressed
+                      child: Text(
+                        'Calculate',
                         style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xff000000)),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green,
+                        ),
                       ),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            MaterialButton(
-                              onPressed: () {
-                                _inc();
-                              },
-                              elevation: 2.0,
-                              color: Colors.blue,
-                              hoverColor: Colors.green,
-                              highlightColor: Colors.greenAccent,
-                              child: Icon(
-                                Icons.add,
-                                size: 50.0,
-                              ),
-                              padding: EdgeInsets.all(15.0),
-                              shape: CircleBorder(),
-                            ),
-                            MaterialButton(
-                              onPressed: () {
-                                _dec();
-                              },
-                              elevation: 2.0,
-                              color: Colors.blue,
-                              hoverColor: Colors.red,
-                              highlightColor: Colors.redAccent,
-                              child: Icon(
-                                Icons.remove,
-                                size: 50.0,
-                              ),
-                              padding: EdgeInsets.all(15.0),
-                              shape: CircleBorder(),
-                            )
-                          ])
-                    ])),
-            ElevatedButton(
-              onPressed: () {
-                _bnmi();
-                Navigator.pushNamed(context, '/second',
-                    arguments: Argument(bmi: bmi!, it: it!));
-              }, //onPressed
-              child: Text(
-                'Calculate',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green,
-                ),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.grey,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5), // <-- Radius
-                ),
-              ),
-            ),
-            //       Text("BMI=${bmi.round()}\nYou are in the category: ${it}",
-            //           style: TextStyle(fontSize:40, color: Color(0xff230000)
-            // ),
-            // ),
-          ]),
-        ]),
-      )
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.grey,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5), // <-- Radius
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              )
+        ),
     );
+
   }
 }
