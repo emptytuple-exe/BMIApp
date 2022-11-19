@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+//import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+class Argument {
+  final double bmi;
+  final String it;
+  Argument({required this.bmi, required this.it});
+}
 
 class SecondPage extends StatefulWidget {
-  SecondPage({required this.bmi, required this.it});
 
-  double bmi;
-  String it;
-
+  SecondPage();
   @override
   State<SecondPage> createState() => _SecondPageState();
 }
@@ -15,6 +17,7 @@ class SecondPage extends StatefulWidget {
 class _SecondPageState extends State<SecondPage> {
   @override
   Widget build(BuildContext context) {
+    final args= ModalRoute.of(context)!.settings.arguments as Argument;
     return Scaffold(
       appBar: AppBar(
         title: Text("Result",
@@ -28,9 +31,10 @@ class _SecondPageState extends State<SecondPage> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("BMI=${widget.bmi.round()}\nYou are in the category: ${widget.it}",
-                    style: TextStyle(fontSize:40, color: Color(0xff230000)
+                  Text("BMI=${args.bmi.round()}\nYou are in the category: ${args.it}",
+                    style: TextStyle(fontSize:40, color: Color(0xff230000),
                     ),
+                      textAlign: TextAlign.center
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -50,44 +54,7 @@ class _SecondPageState extends State<SecondPage> {
                       ),
                     ),
                   ),
-                  RatingBar.builder(
-                      initialRating: 3,
-                      itemCount: 5,
-                      itemBuilder: (context, index) {
-                        switch (index) {
-                          case 0:
-                            return Icon(
-                              Icons.sentiment_very_dissatisfied,
-                              color: Colors.red,
-                            );
-                          case 1:
-                            return Icon(
-                              Icons.sentiment_dissatisfied,
-                              color: Colors.redAccent,
-                            );
-                          case 2:
-                            return Icon(
-                              Icons.sentiment_neutral,
-                              color: Colors.amber,
-                            );
-                          case 3:
-                            return Icon(
-                              Icons.sentiment_satisfied,
-                              color: Colors.lightGreen,
-                            );
-                          case 4:
-                            return Icon(
-                              Icons.sentiment_very_satisfied,
-                              color: Colors.green,
-                            );
-                          default:
-                            return Container();
-                        }
-                      },
-                      onRatingUpdate: (rating) {
-                        print(rating);
-                      },
-                  )
+
                 ] // column-children
               )
             ] // row-children
