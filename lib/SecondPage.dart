@@ -19,44 +19,44 @@ class _SecondPageState extends State<SecondPage> {
   Widget build(BuildContext context) {
     final args= ModalRoute.of(context)!.settings.arguments as Argument;
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Result",
-        style: TextStyle(color: Colors.black,
+        appBar: AppBar(
+          title: Text("Result",
+            style: TextStyle(color: Colors.black,
+            ),
+          ),
         ),
-      ),
-      ),
-      body:
+        body:
         Center(
-          child:
+            child:
             Column(
-              children: [
-                Text("BMI=${args.bmi.round()}\nYou are in the category: ${args.it}",
-                    style: TextStyle(fontSize:40, color: Color(0xff230000),
+                children: [
+                  Text("BMI=${args.bmi.round()}\nYou are in the category: ${args.it}",
+                      style: TextStyle(fontSize:40, color: Color(0xff230000),
+                      ),
+                      textAlign: TextAlign.center
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },//onPressed
+                    child: Text('Re-calculate',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xff000000),
+                      ),
                     ),
-                    textAlign: TextAlign.center
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },//onPressed
-                  child: Text('Re-calculate',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xff000000),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5), // <-- Radius
+                      ),
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5), // <-- Radius
-                    ),
-                  ),
-                ),
 
-              ] // column-children
+                ] // column-children
             )
-            )
-        );
+        )
+    );
   } // widget
 } //class
