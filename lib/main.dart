@@ -85,16 +85,18 @@ class _MyHomePageState extends State<MyHomePage> {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Row(
+              Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Column(
-                      children: [
                         Container(
                             child:
-                            Text("Enter your weight here:",
-                              style: TextStyle(fontSize: 40, color: Color(0xff230000)),
-                              textAlign: TextAlign.center,)),
+                                Column(
+                                    children: [
+                                      Text("Enter your height:",
+                                        style: TextStyle(fontSize: 40, color: Color(0xff230000)),
+                                        textAlign: TextAlign.center,)
+                                ])
+                            ),
                         Container(
                           child: FlutterSwitch(
                             width: 70.0,
@@ -122,8 +124,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             },
                           ),
                         ),
-                      ]
-                  )
+
+
                 ],
               ),
               Container(
